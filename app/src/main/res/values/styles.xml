@@ -8,4 +8,13 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!--TabLayout-->
+    <style name="CustomTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabTextAppearance">@style/CustomTab</item>
+    </style>
+
+    <style name="CustomTab" parent="TextAppearance.Design.Tab">
+        <item name="textAllCaps">false</item>
+    </style>
+
 </resources>
