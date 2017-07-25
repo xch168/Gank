@@ -1,4 +1,4 @@
-package com.github.xch168.gank;
+package com.github.xch168.gank.util;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

@@ -1,5 +1,7 @@
 package com.github.xch168.gank;
 
+import com.github.xch168.gank.entity.History;
+
 import io.reactivex.Observable;
 import retrofit2.http.GET;
 import retrofit2.http.Path;

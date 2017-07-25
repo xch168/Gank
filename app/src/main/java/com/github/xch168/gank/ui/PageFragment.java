@@ -1,4 +1,4 @@
-package com.github.xch168.gank;
+package com.github.xch168.gank.ui;
 
 
 import android.os.Bundle;
@@ -12,24 +12,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import org.reactivestreams.Subscriber;
-import org.reactivestreams.Subscription;
+import com.github.xch168.gank.GankData;
+import com.github.xch168.gank.GankService;
+import com.github.xch168.gank.PageGankData;
+import com.github.xch168.gank.R;
+import com.github.xch168.gank.adapter.DataAdapter;
+import com.github.xch168.gank.entity.Gank;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import io.reactivex.Observable;
 import io.reactivex.Observer;
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.observers.SafeObserver;
 import io.reactivex.schedulers.Schedulers;
-import io.reactivex.subjects.Subject;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.http.PUT;
 
 
 /**
