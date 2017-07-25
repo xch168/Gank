@@ -166,6 +166,7 @@ public class PageFragment extends Fragment {
     }
 
     private void loadPageNewestData(GankService gankService) {
+
         gankService.getNewest(2017, 3, 24)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
