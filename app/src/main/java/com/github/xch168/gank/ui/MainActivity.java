@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.github.xch168.gank.R;
+import com.github.xch168.gank.ui.ganks.PageFragment;
 
 import java.util.ArrayList;
 import java.util.List;
