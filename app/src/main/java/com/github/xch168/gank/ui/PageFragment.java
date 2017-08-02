@@ -56,8 +56,6 @@ public class PageFragment extends Fragment {
 
     private DataAdapter mDataAdapter;
 
-    private List<Gank> datas;
-
     private int mPageType;
 
     public PageFragment() {
@@ -103,9 +101,6 @@ public class PageFragment extends Fragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 
         mDataAdapter = new DataAdapter(getActivity());
-        datas = new ArrayList<>();
-
-        mDataAdapter.setDatas(datas);
         mRecyclerView.setAdapter(mDataAdapter);
 
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -160,7 +155,7 @@ public class PageFragment extends Fragment {
     }
 
     private void refresh() {
-        datas.clear();
+        mDataAdapter.clear();
         loadData();
     }
 
@@ -180,30 +175,29 @@ public class PageFragment extends Fragment {
                         Log.i(TAG, "size:" + value.results.androidList.size());
 
                         if (value.results.androidList != null) {
-                            datas.addAll(value.results.androidList);
+                            mDataAdapter.addAll(value.results.androidList);
                         }
                         if (value.results.iOSList != null) {
-                            datas.addAll(value.results.iOSList);
+                            mDataAdapter.addAll(value.results.iOSList);
                         }
                         if (value.results.frontEndList != null) {
-                            datas.addAll(value.results.frontEndList);
+                            mDataAdapter.addAll(value.results.frontEndList);
                         }
                         if (value.results.exResouceList != null) {
-                            datas.addAll(value.results.exResouceList);
+                            mDataAdapter.addAll(value.results.exResouceList);
                         }
                         if (value.results.recommendList != null) {
-                            datas.addAll(value.results.recommendList);
+                            mDataAdapter.addAll(value.results.recommendList);
                         }
                         if (value.results.appList != null) {
-                            datas.addAll(value.results.appList);
+                            mDataAdapter.addAll(value.results.appList);
                         }
                         if (value.results.restVideoList != null) {
-                            datas.addAll(value.results.restVideoList);
+                            mDataAdapter.addAll(value.results.restVideoList);
                         }
                         if (value.results.welfareList != null) {
-                            datas.addAll(value.results.welfareList);
+                            mDataAdapter.addAll(value.results.welfareList);
                         }
-                        mDataAdapter.notifyDataSetChanged();
 
                     }
 
@@ -233,8 +227,7 @@ public class PageFragment extends Fragment {
                     @Override
                     public void onNext(PageGankData value) {
                         if (value.results != null) {
-                            datas.addAll(value.results);
-                            mDataAdapter.notifyDataSetChanged();
+                            mDataAdapter.addAll(value.results);
                         }
                     }
 
@@ -263,8 +256,7 @@ public class PageFragment extends Fragment {
                     @Override
                     public void onNext(PageGankData value) {
                         if (value.results != null) {
-                            datas.addAll(value.results);
-                            mDataAdapter.notifyDataSetChanged();
+                            mDataAdapter.addAll(value.results);
                         }
                     }
 
@@ -293,8 +285,7 @@ public class PageFragment extends Fragment {
                     @Override
                     public void onNext(PageGankData value) {
                         if (value.results != null) {
-                            datas.addAll(value.results);
-                            mDataAdapter.notifyDataSetChanged();
+                            mDataAdapter.addAll(value.results);
                         }
                     }
 
@@ -323,8 +314,7 @@ public class PageFragment extends Fragment {
                     @Override
                     public void onNext(PageGankData value) {
                         if (value.results != null) {
-                            datas.addAll(value.results);
-                            mDataAdapter.notifyDataSetChanged();
+                            mDataAdapter.addAll(value.results);
                         }
                     }
 
@@ -353,8 +343,7 @@ public class PageFragment extends Fragment {
                     @Override
                     public void onNext(PageGankData value) {
                         if (value.results != null) {
-                            datas.addAll(value.results);
-                            mDataAdapter.notifyDataSetChanged();
+                            mDataAdapter.addAll(value.results);
                         }
                     }
 
@@ -383,8 +372,7 @@ public class PageFragment extends Fragment {
                     @Override
                     public void onNext(PageGankData value) {
                         if (value.results != null) {
-                            datas.addAll(value.results);
-                            mDataAdapter.notifyDataSetChanged();
+                            mDataAdapter.addAll(value.results);
                         }
                     }
 
@@ -413,8 +401,7 @@ public class PageFragment extends Fragment {
                     @Override
                     public void onNext(PageGankData value) {
                         if (value.results != null) {
-                            datas.addAll(value.results);
-                            mDataAdapter.notifyDataSetChanged();
+                            mDataAdapter.addAll(value.results);
                         }
                     }
 
@@ -443,8 +430,7 @@ public class PageFragment extends Fragment {
                     @Override
                     public void onNext(PageGankData value) {
                         if (value.results != null) {
-                            datas.addAll(value.results);
-                            mDataAdapter.notifyDataSetChanged();
+                            mDataAdapter.addAll(value.results);
                         }
                     }
 

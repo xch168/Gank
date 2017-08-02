@@ -12,6 +12,8 @@ import com.bumptech.glide.Glide;
 import com.github.xch168.gank.R;
 import com.github.xch168.gank.entity.Gank;
 import com.github.xch168.gank.util.DateUtil;
+import com.github.xch168.quickrecycleradapter.QuickAdapter;
+import com.github.xch168.quickrecycleradapter.QuickViewHolder;
 
 import java.util.List;
 
@@ -19,63 +21,29 @@ import java.util.List;
  * Created by xch on 2017/3/5.
  */
 
-public class DataAdapter extends RecyclerView.Adapter<DataAdapter.ViewHolder> {
+public class DataAdapter extends QuickAdapter<Gank> {
 
-    private Context mContext;
-    private LayoutInflater mLayoutInflater;
-
-    private List<Gank> mDatas;
-
-    public DataAdapter(Context contxt) {
-        mContext = contxt;
-        mLayoutInflater = LayoutInflater.from(contxt);
+    public DataAdapter(Context context) {
+        super(context);
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ViewHolder(mLayoutInflater.inflate(R.layout.view_item, parent, false));
+    protected int getLayoutResId(int viewType) {
+        return R.layout.view_item;
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        Gank gank = mDatas.get(position);
-        holder.titleView.setText(gank.desc);
-        holder.typeView.setText(gank.type);
-        holder.createdAtView.setText(DateUtil.format(gank.createdAt));
+    protected void convert(QuickViewHolder holder, Gank gank) {
+        holder.setText(R.id.tv_title, gank.desc);
+        holder.setText(R.id.tv_type, gank.type);
+        holder.setText(R.id.tv_created_at, DateUtil.format(gank.createdAt));
         if (gank.images != null && gank.images.size() > 0) {
-            holder.imageView.setVisibility(View.VISIBLE);
-            Glide.with(mContext).load(gank.images.get(0)).into(holder.imageView);
+            holder.setVisible(R.id.iv_img, true);
+            Glide.with(context).load(gank.images.get(0)).into((ImageView) holder.getView(R.id.iv_img));
         }
         else
         {
-            holder.imageView.setVisibility(View.GONE);
-        }
-    }
-
-
-    @Override
-    public int getItemCount() {
-        return mDatas == null ? 0 : mDatas.size();
-    }
-
-    public void setDatas(List<Gank> datas) {
-        mDatas = datas;
-    }
-
-    class ViewHolder extends RecyclerView.ViewHolder {
-
-        TextView titleView;
-        TextView typeView;
-        TextView createdAtView;
-        ImageView imageView;
-
-        public ViewHolder(View itemView) {
-            super(itemView);
-
-            titleView = (TextView) itemView.findViewById(R.id.tv_title);
-            typeView = (TextView) itemView.findViewById(R.id.tv_type);
-            createdAtView = (TextView) itemView.findViewById(R.id.tv_created_at);
-            imageView = (ImageView) itemView.findViewById(R.id.iv_img);
+            holder.setVisible(R.id.iv_img, false);
         }
     }
 }
