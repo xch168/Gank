@@ -24,6 +24,8 @@
             android:layout_alignParentLeft="true"
             android:layout_toLeftOf="@+id/iv_img"
             android:layout_marginRight="10dp"
+            android:lines="3"
+            android:ellipsize="end"
             android:textColor="#333333"
             android:textSize="14sp"/>
 
