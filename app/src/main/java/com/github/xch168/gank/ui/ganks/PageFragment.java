@@ -7,14 +7,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.github.xch168.gank.GankData;
-import com.github.xch168.gank.GankService;
-import com.github.xch168.gank.PageGankData;
 import com.github.xch168.gank.R;
 import com.github.xch168.gank.adapter.DataAdapter;
 import com.github.xch168.gank.entity.Gank;
@@ -22,14 +18,6 @@ import com.github.xch168.gank.ui.BaseFragment;
 import com.github.xch168.quickrecycleradapter.BaseQuickAdapter;
 
 import java.util.List;
-
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
-import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 
 /**
@@ -101,8 +89,8 @@ public class PageFragment extends BaseFragment implements PageContract.View {
     }
 
     private void initView() {
-        mSwipeRefreshLayout = (SwipeRefreshLayout) getView().findViewById(R.id.srl);
-        mRecyclerView = (RecyclerView) getView().findViewById(R.id.recycler_view);
+        mSwipeRefreshLayout = getView().findViewById(R.id.srl);
+        mRecyclerView = getView().findViewById(R.id.recycler_view);
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 
