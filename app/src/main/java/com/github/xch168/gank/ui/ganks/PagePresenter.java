@@ -32,6 +32,8 @@ public class PagePresenter implements PageContract.Presenter {
     
     private GankService mGankService;
 
+    private int mCurrentPage = 1;
+
     public PagePresenter(PageContract.View view) {
         mView = view;
         mGankService = RetrofitHelper.getService(GankService.class);
@@ -47,28 +49,28 @@ public class PagePresenter implements PageContract.Presenter {
                 loadPageNewestData();
                 break;
             case PAGE_ANDROID:
-                loadPageAndroidData();
+                loadPageAndroidData(mCurrentPage);
                 break;
             case PAGE_IOS:
-                loadPageIosData();
+                loadPageIosData(mCurrentPage);
                 break;
             case PAGE_FRONT_END:
-                loadPageFrontEndData();
+                loadPageFrontEndData(mCurrentPage);
                 break;
             case PAGE_EX_RESOURCE:
-                loadPageExResourceData();
+                loadPageExResourceData(mCurrentPage);
                 break;
             case PAGE_RECOMMEND:
-                loadPageRecommendData();
+                loadPageRecommendData(mCurrentPage);
                 break;
             case PAGE_APP:
-                loadPageAppData();
+                loadPageAppData(mCurrentPage);
                 break;
             case PAGE_REST_VIDEO:
-                loadPageRestVideoData();
+                loadPageRestVideoData(mCurrentPage);
                 break;
             case PAGE_WELFARE:
-                loadPageWelfareData();
+                loadPageWelfareData(mCurrentPage);
                 break;
         }
     }
@@ -80,7 +82,8 @@ public class PagePresenter implements PageContract.Presenter {
 
     @Override
     public void loadMore(int pageType) {
-
+        mCurrentPage++;
+        loadData(pageType);
     }
 
     private void loadPageNewestData() {
@@ -136,8 +139,8 @@ public class PagePresenter implements PageContract.Presenter {
                 });
     }
 
-    private void loadPageAndroidData() {
-        mGankService.listAndroid(1)
+    private void loadPageAndroidData(int page) {
+        mGankService.listAndroid(page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<PageGankData>() {
@@ -165,8 +168,8 @@ public class PagePresenter implements PageContract.Presenter {
                 });
     }
 
-    private void loadPageIosData() {
-        mGankService.listIos(1)
+    private void loadPageIosData(int page) {
+        mGankService.listIos(page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<PageGankData>() {
@@ -194,8 +197,8 @@ public class PagePresenter implements PageContract.Presenter {
                 });
     }
 
-    private void loadPageFrontEndData() {
-        mGankService.listFrontEnd(1)
+    private void loadPageFrontEndData(int page) {
+        mGankService.listFrontEnd(page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<PageGankData>() {
@@ -223,8 +226,8 @@ public class PagePresenter implements PageContract.Presenter {
                 });
     }
 
-    private void loadPageExResourceData() {
-        mGankService.listExResource(1)
+    private void loadPageExResourceData(int page) {
+        mGankService.listExResource(page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<PageGankData>() {
@@ -252,8 +255,8 @@ public class PagePresenter implements PageContract.Presenter {
                 });
     }
 
-    private void loadPageRecommendData() {
-        mGankService.listRecommend(1)
+    private void loadPageRecommendData(int page) {
+        mGankService.listRecommend(page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<PageGankData>() {
@@ -281,8 +284,8 @@ public class PagePresenter implements PageContract.Presenter {
                 });
     }
 
-    private void loadPageAppData() {
-        mGankService.listApp(1)
+    private void loadPageAppData(int page) {
+        mGankService.listApp(page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<PageGankData>() {
@@ -310,8 +313,8 @@ public class PagePresenter implements PageContract.Presenter {
                 });
     }
 
-    private void loadPageRestVideoData() {
-        mGankService.listRestVideo(1)
+    private void loadPageRestVideoData(int page) {
+        mGankService.listRestVideo(page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<PageGankData>() {
@@ -339,8 +342,8 @@ public class PagePresenter implements PageContract.Presenter {
                 });
     }
 
-    private void loadPageWelfareData() {
-        mGankService.listWelfare(1)
+    private void loadPageWelfareData(int page) {
+        mGankService.listWelfare(page)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<PageGankData>() {

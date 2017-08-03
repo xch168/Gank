@@ -1,12 +1,7 @@
 package com.github.xch168.gank.adapter;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.github.xch168.gank.R;
@@ -14,8 +9,6 @@ import com.github.xch168.gank.entity.Gank;
 import com.github.xch168.gank.util.DateUtil;
 import com.github.xch168.quickrecycleradapter.QuickAdapter;
 import com.github.xch168.quickrecycleradapter.QuickViewHolder;
-
-import java.util.List;
 
 /**
  * Created by xch on 2017/3/5.

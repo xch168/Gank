@@ -95,13 +95,17 @@ public class PageFragment extends BaseFragment implements PageContract.View {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 
         mDataAdapter = new DataAdapter(getActivity());
-        mDataAdapter.setLoadMoreEnable(true);
-        mDataAdapter.setOnLoadMoreListener(new BaseQuickAdapter.OnLoadMoreListener() {
-            @Override
-            public void onLoadMore() {
-                mPresenter.loadMore(mPageType);
-            }
-        });
+        if (mPageType != PAGE_NEWEST)
+        {
+            mDataAdapter.setLoadMoreEnable(true);
+            mDataAdapter.setOnLoadMoreListener(new BaseQuickAdapter.OnLoadMoreListener() {
+                @Override
+                public void onLoadMore() {
+                    mPresenter.loadMore(mPageType);
+                }
+            });
+        }
+
         mRecyclerView.setAdapter(mDataAdapter);
 
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
