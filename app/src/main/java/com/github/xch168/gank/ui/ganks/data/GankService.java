@@ -1,4 +1,4 @@
-package com.github.xch168.gank;
+package com.github.xch168.gank.ui.ganks.data;
 
 import com.github.xch168.gank.entity.History;
 
