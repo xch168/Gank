@@ -5,8 +5,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 
 import com.github.xch168.gank.R;
 import com.github.xch168.gank.ui.ganks.PageFragment;
@@ -16,6 +19,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Toolbar mToolbar;
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
 
@@ -28,8 +32,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mToolbar = findViewById(R.id.tool_bar);
         mTabLayout = findViewById(R.id.tab_layout);
         mViewPager = findViewById(R.id.view_pager);
+
+        mToolbar.setTitle(R.string.app_name);
+        setSupportActionBar(mToolbar);
 
         mTabLayout.addTab(mTabLayout.newTab().setText(titles[0]));
         mTabLayout.addTab(mTabLayout.newTab().setText(titles[1]));
